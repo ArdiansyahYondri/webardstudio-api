@@ -1,0 +1,387 @@
+{
+    "info": {
+        "name": "UTS API .ARDstudio Final (14 Tes)",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "1. Otentikasi (Auth)",
+            "item": [
+                {
+                    "name": "01_Auth_Register_Pelanggan_Baru",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            { "key": "Accept", "value": "application/json" }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"name\": \"Nama Budi\",\r\n    \"email\": \"budi2@gmail.com\",\r\n    \"password\": \"password123\",\r\n    \"password_confirmation\": \"password123\"\r\n}",
+                            "options": { "raw": { "language": "json" } }
+                        },
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/register",
+                            "protocol": "http",
+                            "host": ["127", "0", "0", "1"],
+                            "port": "8000",
+                            "path": ["api", "register"]
+                        }
+                    }
+                },
+                {
+                    "name": "01b_Auth_Register_Admin_Baru",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            { "key": "Accept", "value": "application/json" }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"name\": \"Admin Baru\",\r\n    \"email\": \"admin2@ardstudio.com\",\r\n    \"password\": \"password123\",\r\n    \"password_confirmation\": \"password123\",\r\n    \"role\": \"admin\"\r\n}",
+                            "options": { "raw": { "language": "json" } }
+                        },
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/register",
+                            "protocol": "http",
+                            "host": ["127", "0", "0", "1"],
+                            "port": "8000",
+                            "path": ["api", "register"]
+                        }
+                    }
+                },
+                {
+                    "name": "02_Auth_Login_Dapat_Token",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            { "key": "Accept", "value": "application/json" }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"email\": \"admin@ardstudio.com\",\r\n    \"password\": \"password123\"\r\n}",
+                            "options": { "raw": { "language": "json" } }
+                        },
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/login",
+                            "protocol": "http",
+                            "host": ["127", "0", "0", "1"],
+                            "port": "8000",
+                            "path": ["api", "login"]
+                        }
+                    }
+                },
+                {
+                    "name": "03_Auth_Logout_Berhasil",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "PASTE_TOKEN_DI_SINI",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            { "key": "Accept", "value": "application/json" }
+                        ],
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/logout",
+                            "protocol": "http",
+                            "host": ["127", "0", "0", "1"],
+                            "port": "8000",
+                            "path": ["api", "logout"]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "2. Katalog Alat (Gears)",
+            "item": [
+                {
+                    "name": "04_Katalog_Lihat_Semua_Alat",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "PASTE_TOKEN_DI_SINI",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            { "key": "Accept", "value": "application/json" }
+                        ],
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/gears",
+                            "protocol": "http",
+                            "host": ["127", "0", "0", "1"],
+                            "port": "8000",
+                            "path": ["api", "gears"]
+                        }
+                    }
+                },
+                {
+                    "name": "05_Katalog_Lihat_Detail_Satu_Alat",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "PASTE_TOKEN_DI_SINI",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            { "key": "Accept", "value": "application/json" }
+                        ],
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/gears/1",
+                            "protocol": "http",
+                            "host": ["127", "0", "0", "1"],
+                            "port": "8000",
+                            "path": ["api", "gears", "1"]
+                        }
+                    }
+                },
+                {
+                    "name": "06_Katalog_Admin_Tambah_Alat_Baru",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "PASTE_TOKEN_ADMIN_DI_SINI",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            { "key": "Accept", "value": "application/json" }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"nama_gear\": \"Lampu Godox\",\r\n    \"merk\": \"Godox\",\r\n    \"harga_4jam\": 30000,\r\n    \"harga_6jam\": 40000,\r\n    \"harga_12jam\": 70000,\r\n    \"harga_24jam\": 100000,\r\n    \"jaminan\": \"KTP\",\r\n    \"status\": \"tersedia\",\r\n    \"stok\": 3\r\n}",
+                            "options": { "raw": { "language": "json" } }
+                        },
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/gears",
+                            "protocol": "http",
+                            "host": ["127", "0", "0", "1"],
+                            "port": "8000",
+                            "path": ["api", "gears"]
+                        }
+                    }
+                },
+                {
+                    "name": "07_Katalog_Admin_Ubah_Data_Alat",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "PASTE_TOKEN_ADMIN_DI_SINI",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            { "key": "Accept", "value": "application/json" }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"harga_24jam\": 95000,\r\n    \"stok\": 5\r\n}",
+                            "options": { "raw": { "language": "json" } }
+                        },
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/gears/1",
+                            "protocol": "http",
+                            "host": ["127", "0", "0", "1"],
+                            "port": "8000",
+                            "path": ["api", "gears", "1"]
+                        }
+                    }
+                },
+                {
+                    "name": "08_Katalog_Admin_Hapus_Alat",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "PASTE_TOKEN_ADMIN_DI_SINI",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            { "key": "Accept", "value": "application/json" }
+                        ],
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/gears/1",
+                            "protocol": "http",
+                            "host": ["127", "0", "0", "1"],
+                            "port": "8000",
+                            "path": ["api", "gears", "1"]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "3. Transaksi (Rentals)",
+            "item": [
+                {
+                    "name": "09_Transaksi_Pelanggan_Buat_Pesanan_Baru",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "PASTE_TOKEN_PELANGGAN_DI_SINI",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            { "key": "Accept", "value": "application/json" }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"items\": [\r\n        {\r\n            \"gear_id\": 1,\r\n            \"durasi\": 24,\r\n            \"qty\": 1\r\n        }\r\n    ]\r\n}",
+                            "options": { "raw": { "language": "json" } }
+                        },
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/rentals",
+                            "protocol": "http",
+                            "host": ["127", "0", "0", "1"],
+                            "port": "8000",
+                            "path": ["api", "rentals"]
+                        }
+                    }
+                },
+                {
+                    "name": "10_Transaksi_Lihat_Riwayat_Sewa",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "PASTE_TOKEN_PELANGGAN_DI_SINI",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            { "key": "Accept", "value": "application/json" }
+                        ],
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/rentals",
+                            "protocol": "http",
+                            "host": ["127", "0", "0", "1"],
+                            "port": "8000",
+                            "path": ["api", "rentals"]
+                        }
+                    }
+                },
+                {
+                    "name": "11_Transaksi_Admin_Proses_Pengembalian_Denda",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "PASTE_TOKEN_ADMIN_DI_SINI",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            { "key": "Accept", "value": "application/json" }
+                        ],
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/rentals/1/return",
+                            "protocol": "http",
+                            "host": ["127", "0", "0", "1"],
+                            "port": "8000",
+                            "path": ["api", "rentals", "1", "return"]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "4. Pembuktian Keamanan",
+            "item": [
+                {
+                    "name": "12_Keamanan_Akses_Ditolak_Tanpa_Token",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            { "key": "Accept", "value": "application/json" }
+                        ],
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/gears",
+                            "protocol": "http",
+                            "host": ["127", "0", "0", "1"],
+                            "port": "8000",
+                            "path": ["api", "gears"]
+                        }
+                    }
+                },
+                {
+                    "name": "13_Keamanan_Akses_Ditolak_Bukan_Admin",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "PASTE_TOKEN_PELANGGAN_DI_SINI",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            { "key": "Accept", "value": "application/json" }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"nama_gear\": \"Barang Ilegal\",\r\n    \"status\": \"tersedia\",\r\n    \"stok\": 1\r\n}",
+                            "options": { "raw": { "language": "json" } }
+                        },
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/gears",
+                            "protocol": "http",
+                            "host": ["127", "0", "0", "1"],
+                            "port": "8000",
+                            "path": ["api", "gears"]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
